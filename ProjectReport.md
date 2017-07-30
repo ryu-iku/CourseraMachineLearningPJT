@@ -53,7 +53,7 @@ training <- select(training,
 ## Model selection
 ### Model selection strategy
 
-1) Try several usual model for multiple-classification, with a simple training setting.
+1) Try several usual models for multiple-classification, with a simple training setting.
 2) Check whether any model has an over-95% accuracy. If yes, then choose the the model with highest accuracy as the final model. If no, then continue next step.
 3) Choose models with comparatively better accuracy and less time for the next step.
 4) Tune parameters of selected models.
@@ -80,6 +80,23 @@ The R library of ```caret``` will be used in this project. Each model will be tr
 # default setting of trainControl for the cross validation:
 default.trainCtrl <- trainControl()
 default.trainCtrl[1:5]
+```
+
+```
+## $method
+## [1] "boot"
+## 
+## $number
+## [1] 25
+## 
+## $repeats
+## [1] 25
+## 
+## $search
+## [1] "grid"
+## 
+## $p
+## [1] 0.75
 ```
 
 #### Naive Bayes model

@@ -6,6 +6,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE)
+library(dplyr)
+library(caret)
 ```
 
 ## Introduction
@@ -73,7 +75,7 @@ There are 8 models to be checked:
 Naive Bayes model, Linear SVM and k-Nearest Neighbors model, are expected to have less time costs, due to their relatively less complexity. The rest 5 models are expected to have higher accuracies but more time costs.
 
 The R library of ```caret``` will be used in this project. Each model will be trained with the ```train``` method of ```caret```. For simplicity, the default cross validation will be used at first.
-```{r}
+```{r eval = TRUE}
 # default setting of trainControl for the cross validation:
 default.trainCtrl <- trainControl()
 default.trainCtrl[1:5]
@@ -91,6 +93,9 @@ load("modelNb.RData")
 modelNb$times$everything[3] # Time used
 max(modelNb$results$Accuracy) # Accuracy
 ```
+```{r eval = TRUE, include=FALSE}
+rm(modelNb)
+```
 #### Linear SVM
 ```{r}
 svmLin <- train(classe ~ ., data = training, method = "svmLinear")
@@ -102,6 +107,9 @@ load(file = "svmLin.RData")
 svmLin$times$everything[3] # Time used
 max(svmLin$results$Accuracy) # Accuracy
 ```
+```{r eval = TRUE, include=FALSE}
+rm(svmLin)
+```
 #### k-Nearest Neighbors model
 ```{r}
 modelKnn <- train(classe ~ ., data = training, method = "knn")
@@ -112,6 +120,9 @@ load(file = "modelKnn.RData")
 ```{r eval = TRUE}
 modelKnn$times$everything[3] # Time used
 max(modelKnn$results$Accuracy) # Accuracy
+```
+```{r eval = TRUE, include=FALSE}
+rm(modelKnn)
 ```
 #### Radial SVM
 ```{r}
@@ -126,6 +137,9 @@ load(file = "modelSvmRadial.RData")
 ```{r eval = TRUE}
 modelSvmRadial$times$everything[3] # Time used
 max(modelSvmRadial$results$Accuracy) # Accuracy
+```
+```{r eval = TRUE, include=FALSE}
+rm(modelSvmRadial)
 ```
 #### Bagged Model
 ```{r}

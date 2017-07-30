@@ -161,7 +161,7 @@ training &lt;- select(training,
 <div id="model-selection-strategy" class="section level3">
 <h3>Model selection strategy</h3>
 <ol style="list-style-type: decimal">
-<li>Try several usual model for multiple-classification, with a simple training setting.</li>
+<li>Try several usual models for multiple-classification, with a simple training setting.</li>
 <li>Check whether any model has an over-95% accuracy. If yes, then choose the the model with highest accuracy as the final model. If no, then continue next step.</li>
 <li>Choose models with comparatively better accuracy and less time for the next step.</li>
 <li>Tune parameters of selected models.</li>
@@ -184,6 +184,20 @@ Neural Network model</code></pre>
 <pre class="r"><code># default setting of trainControl for the cross validation:
 default.trainCtrl &lt;- trainControl()
 default.trainCtrl[1:5]</code></pre>
+<pre><code>## $method
+## [1] &quot;boot&quot;
+## 
+## $number
+## [1] 25
+## 
+## $repeats
+## [1] 25
+## 
+## $search
+## [1] &quot;grid&quot;
+## 
+## $p
+## [1] 0.75</code></pre>
 <div id="naive-bayes-model" class="section level4">
 <h4>Naive Bayes model</h4>
 <pre class="r"><code>library(caret)
